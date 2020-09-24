@@ -54,10 +54,11 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
+    <Compile Include="Data\Profesor.cs" />
+    <Compile Include="Data\Repository.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\FechaInscripcion.cs" />
-    <Compile Include="Models\Profesor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

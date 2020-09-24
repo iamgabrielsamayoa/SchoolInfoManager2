@@ -26,11 +26,11 @@ namespace SchoolSharedInfo.Data
             context.SaveChanges();
             var Cursos = new List<Curso>
             {
-            new Curso{CursoId=1050,NombreCurso="Matematica",Creditos=3,},
-            new Curso{CursoId=1051,NombreCurso="Idioma Espanol",Creditos=3,},
-            new Curso{CursoId=1052,NombreCurso="Ciencias Naturales",Creditos=3,},
-            new Curso{CursoId=1053,NombreCurso="Estudios Sociales",Creditos=3,},
-            new Curso{CursoId=1054,NombreCurso="Ingles",Creditos=3,},
+            new Curso{CursoId=1050,NombreCurso="Matematica",Creditos=3,ProfesorId=1},
+            new Curso{CursoId=1051,NombreCurso="Idioma Espanol",Creditos=3,ProfesorId=2},
+            new Curso{CursoId=1052,NombreCurso="Ciencias Naturales",Creditos=3,ProfesorId=3},
+            new Curso{CursoId=1053,NombreCurso="Estudios Sociales",Creditos=3,ProfesorId=1},
+            new Curso{CursoId=1054,NombreCurso="Ingles",Creditos=3,ProfesorId=2},
             };
             Cursos.ForEach(s => context.Cursos.Add(s));
             context.SaveChanges();
@@ -38,8 +38,8 @@ namespace SchoolSharedInfo.Data
             var Profesores = new List<Profesor>
             {
             new Profesor{Id=1,Nombre="Mario Salazar",},
-            new Profesor{Id=1,Nombre="Regina Florian",},
-            new Profesor{Id=1,Nombre="Rudy Rivas",},
+            new Profesor{Id=2,Nombre="Regina Florian",},
+            new Profesor{Id=3,Nombre="Rudy Rivas",},
             };
             Profesores.ForEach(s => context.Profesor.Add(s));
             context.SaveChanges();

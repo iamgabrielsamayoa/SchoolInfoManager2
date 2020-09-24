@@ -17,8 +17,10 @@ namespace SchoolSharedInfo.Models
 
         public string Nombre { get; set; }
 
+
+
         public virtual Profesor Profesores { get; set; }
-        
+
 
     }
 }

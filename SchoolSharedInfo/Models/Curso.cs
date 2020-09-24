@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+
 
 
 namespace SchoolSharedInfo.Models
@@ -16,6 +16,8 @@ namespace SchoolSharedInfo.Models
         public string NombreCurso { get; set; }
 
         public int Creditos { get; set; }
+
+        public int ProfesorId { get; set; }
 
         public Alumno alumnos { get; set; }
         public virtual Curso Cursos { get; set; }

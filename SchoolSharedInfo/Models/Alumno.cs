@@ -8,10 +8,10 @@ namespace SchoolSharedInfo.Models
 {
     public class Alumno
     {
-        //public Alumno()
-        //{
-        //    cursos = new List<Curso>();
-        //}
+        public Alumno()
+        {
+            FechaInscripcions = new List<FechaInscripcion>();
+        }
 
         public int Id { get; set; }
 

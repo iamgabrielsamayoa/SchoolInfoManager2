@@ -28,7 +28,7 @@ namespace SchoolSharedInfo.Data
             
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-
+            
         }
     }
 }

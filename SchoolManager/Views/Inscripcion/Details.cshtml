@@ -1,0 +1,34 @@
+﻿@model SchoolSharedInfo.Models.FechaInscripcion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FechaInscripcion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CursoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CursoID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlumnoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlumnoID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FechaInscripcionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
