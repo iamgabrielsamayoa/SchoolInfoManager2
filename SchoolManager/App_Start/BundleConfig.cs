@@ -23,7 +23,7 @@ namespace SchoolManager
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-solar.css",
+                      "~/Content/bootstrap-sola.css",
                       "~/Content/site.css"));
         }
     }
