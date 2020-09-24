@@ -14,9 +14,6 @@ namespace SchoolSharedInfo.Models
 
         public int AlumnoID { get; set; }
 
-        public virtual Curso Curso { get; set; }
-        public virtual Alumno Alumno { get; set; }
-
         public virtual ICollection<FechaInscripcion> FechaInscripcions { get; set; }
     }
 }
