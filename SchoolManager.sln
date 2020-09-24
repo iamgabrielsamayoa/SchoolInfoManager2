@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagerWebApp", "SchoolManager\SchoolManagerWebApp.csproj", "{592E6F41-2074-4637-89A5-911C8C352931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSharedInfo", "SchoolSharedInfo\SchoolSharedInfo.csproj", "{4BAD8D49-4F43-4A5A-A460-E28F285FC8C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{592E6F41-2074-4637-89A5-911C8C352931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592E6F41-2074-4637-89A5-911C8C352931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592E6F41-2074-4637-89A5-911C8C352931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592E6F41-2074-4637-89A5-911C8C352931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BAD8D49-4F43-4A5A-A460-E28F285FC8C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAD8D49-4F43-4A5A-A460-E28F285FC8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BAD8D49-4F43-4A5A-A460-E28F285FC8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BAD8D49-4F43-4A5A-A460-E28F285FC8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53A5C4D7-C854-4B80-96AE-41FA1C7C4234}
+	EndGlobalSection
+EndGlobal
