@@ -56,32 +56,24 @@ namespace SchoolManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "FechaInscripcionID,CursoID,AlumnoID")] FechaInscripcion fechaInscripcion, int? SelectedDepartment)
         {
-            //Repository repository = new Repository(db);
-            //var AlumnosList = repository.GetAlumnos();
+            Repository repository = new Repository(db);
+            var AlumnosList = repository.GetAlumnos();
 
-            //var ViewModel = new NewInscripcion
-            //{
-            //    Alumnos = AlumnosList
-            //};
-
-            List<SelectListItem> lst = new List<SelectListItem>();
-
-            lst.Add(new SelectListItem() { Text = "Gestion", Value = "1" });
-            lst.Add(new SelectListItem() { Text = "Colegio", Value = "2" });
-            lst.Add(new SelectListItem() { Text = "Estado", Value = "3" });
-            lst.Add(new SelectListItem() { Text = "Pais", Value = "4" });
-
-            ViewBag.Opciones = lst;
+            var ViewModel = new NewInscripcion
+            {
+                Alumnos = AlumnosList
+            };
 
             if (ModelState.IsValid)
             {
                 db.FechaInscripcion.Add(fechaInscripcion);
                 db.SaveChanges();
-                //return View(ViewModel);
-              return RedirectToAction("Index");
+                return View(ViewModel);
+              //return RedirectToAction("Index");
             }
 
-            return View(fechaInscripcion);
+
+            return View(ViewModel);
         }
 
         // GET: Inscripcion/Edit/5
