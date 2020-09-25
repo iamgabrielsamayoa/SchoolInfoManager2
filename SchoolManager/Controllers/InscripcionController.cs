@@ -49,15 +49,17 @@ namespace SchoolManager.Controllers
             Repository repository = new Repository(db);
             var AlumnosList = repository.GetAlumnos();
             var CursosList = repository.GetCursos();
+            var InscripcionesList = repository.GetInscripciones();
 
             var ViewModel = new InscripcionAcAddViewModel
             {
                 Alumnos = AlumnosList,
-                Cursos = CursosList
+                Cursos = CursosList,
+                Inscripciones = InscripcionesList
             };
             ViewModel.Init(repository);
-            //El String vacio lo use para elegir opcion 2 que seria cursos
-            ViewModel.Init(repository, "");
+            ViewModel.Init(repository, "cursos");
+            ViewModel.Init(repository, "fecha");
             return View(ViewModel);
         }
 

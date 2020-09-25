@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using SchoolManager.ViewModels;
 using SchoolSharedInfo.Data;
 using SchoolSharedInfo.Models;
 
@@ -18,7 +19,16 @@ namespace SchoolManager.Controllers
         // GET: Alumno
         public ActionResult Index()
         {
-            return View(db.Alumnos.ToList());
+            Repository repository = new Repository(db);
+            var AlumnosList = repository.GetAlumnos();
+            var ViewModel = new InscripcionAcAddViewModel
+            {
+                Alumnos = AlumnosList,
+            };
+            ViewModel.Init(repository);
+            ViewModel.Init(repository, "");
+            return View(ViewModel);
+            //return View(db.Alumnos.ToList());
         }
 
         // GET: Alumno/Details/5
@@ -28,6 +38,7 @@ namespace SchoolManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Alumno alumno = db.Alumnos.Find(id);
             if (alumno == null)
             {

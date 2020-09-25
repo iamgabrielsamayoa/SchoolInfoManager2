@@ -18,9 +18,11 @@ namespace SchoolManager.ViewModels
 
         public IEnumerable<FechaInscripcion> Inscripciones { get; set; }
 
+        public Alumno Alumno { get; set; }
 
-        
-        public FechaInscripcion Customer { get; set; }
+        public Curso Curso { get; set; }
+
+        public FechaInscripcion fechaInscripcion { get; set; }
 
         [Display(Name = "Alumno")]
         public int AlumnoId { get; set; }
@@ -33,6 +35,10 @@ namespace SchoolManager.ViewModels
 
         public SelectList CursosSelectListItems { get; set; }
 
+        public SelectList FechaInscripcionselectListItems { get; set; }
+
+        public SelectList ProfesoresselectListItems { get; set; }
+
         public virtual void Init(Repository repository)
         {
                  AlumnosSelectListItems = new SelectList(
@@ -41,9 +47,26 @@ namespace SchoolManager.ViewModels
         }
         public virtual void Init(Repository repository, String opcion)
         {
-            CursosSelectListItems = new SelectList(
-                repository.GetCursos(), "CursoId", "NombreCurso"
-                );
+            if (opcion.ToLower() == "cursos")
+            {
+                CursosSelectListItems = new SelectList(
+                    repository.GetCursos(), "CursoId", "NombreCurso"
+                    );
+            }
+
+            else if (opcion.ToLower() == "fecha" || opcion.Contains("fecha"))
+            {
+                FechaInscripcionselectListItems = new SelectList(
+                    repository.GetInscripciones(), "FechaInscripcionInicial", "FechaFinalSemestre"
+                    );
+            }
+
+            else if (opcion.ToLower() == "profesor")
+            {
+                ProfesoresselectListItems = new SelectList(
+                    repository.GetProfesores(), "Id", "Nombre"
+                    );
+            }
         }
         
 

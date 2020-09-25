@@ -11,6 +11,8 @@ namespace SchoolSharedInfo.Models
     {
 
         public int FechaInscripcionID { get; set; }
+
+        [Display(Name = "Fecha registrada de inscripcion")]
         public DateTime FechaInscripcionInicial { get; set; }
 
         //Esto lo modifico a nombre curso va?

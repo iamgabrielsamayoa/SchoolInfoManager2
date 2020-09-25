@@ -29,5 +29,36 @@ namespace SchoolSharedInfo.Data
                 .OrderBy(r => r.NombreCurso)
                 .ToList();
         }
+
+        public IList<FechaInscripcion> GetInscripciones()
+        {
+            return _context.FechaInscripcion
+                .OrderBy(r => r.FechaInscripcionInicial)
+                .ToList();
+        }
+
+        public IList<Profesor> GetProfesores()
+        {
+            return _context.Profesor
+                .OrderBy(r => r.Nombre)
+                .ToList();
+        }
+
+        //public override FechaInscripcion Get(int id, bool includeRelatedEntities = true)
+        //{
+        //    var comicBooks = Context..AsQueryable();
+
+        //    if (includeRelatedEntities)
+        //    {
+        //        comicBooks = comicBooks
+        //            .Include(cb => cb.Series)
+        //            .Include(cb => cb.Artists.Select(a => a.Artist))
+        //            .Include(cb => cb.Artists.Select(a => a.Role));
+        //    }
+
+        //    return comicBooks
+        //        .Where(cb => cb.Id == id)
+        //        .SingleOrDefault();
+        //}
     }
 }

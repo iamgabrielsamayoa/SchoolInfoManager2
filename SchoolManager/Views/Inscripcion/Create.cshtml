@@ -33,6 +33,9 @@
             </div>
         </div>
 
+        <div>
+            @Html.Partial("_DatosGeneralesPartialView", Model)
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Asignar.AlumnoID, htmlAttributes: new { @class = "control-label col-md-2" })
