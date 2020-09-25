@@ -16,7 +16,7 @@ namespace SchoolSharedInfo.Data
             _context = context;
         }
 
-        public virtual IList<Alumno> GetAlumnos()
+        public IList<Alumno> GetAlumnos()
         {
             return _context.Alumnos
                 .OrderBy(r => r.Nombre)

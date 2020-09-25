@@ -41,13 +41,22 @@ namespace SchoolManager.Controllers
         // GET: Inscripcion/Create
         public ActionResult Create()
         {
-            db.Alumnos.ToList();
+            Repository repository = new Repository(db);
+            var AlumnosList = repository.GetAlumnos();
+            var CursosList = repository.GetCursos();
 
-
-            return View();
+            var ViewModel = new InscripcionAcAddViewModel
+            {
+                Alumnos = AlumnosList,
+                Cursos = CursosList
+            };
+            ViewModel.Init(repository);
+            //El String vacio lo use para elegir opcion 2 que seria cursos
+            ViewModel.Init(repository, "");
+            return View(ViewModel);
         }
 
-        
+
 
         // POST: Inscripcion/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -56,24 +65,16 @@ namespace SchoolManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "FechaInscripcionID,CursoID,AlumnoID")] FechaInscripcion fechaInscripcion, int? SelectedDepartment)
         {
-            Repository repository = new Repository(db);
-            var AlumnosList = repository.GetAlumnos();
-
-            var ViewModel = new NewInscripcion
-            {
-                Alumnos = AlumnosList
-            };
-
+           
             if (ModelState.IsValid)
             {
                 db.FechaInscripcion.Add(fechaInscripcion);
                 db.SaveChanges();
-                return View(ViewModel);
-              //return RedirectToAction("Index");
+              return RedirectToAction("Index");
             }
 
 
-            return View(ViewModel);
+            return View(fechaInscripcion);
         }
 
         // GET: Inscripcion/Edit/5
@@ -141,13 +142,7 @@ namespace SchoolManager.Controllers
             }
             base.Dispose(disposing);
         }
-
-        private void PopulateDepartmentsDropDownList(object selectedDepartment = null)
-        {
-            var AlumnosQuery = from d in db.Alumnos
-                                   orderby d.Id
-                                   select d;
-            ViewBag.DepartmentID = new SelectList(AlumnosQuery, "AlumnoID", "Nombre", selectedDepartment);
-        }
+       
+        
     }
 }

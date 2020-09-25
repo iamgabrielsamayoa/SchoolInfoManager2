@@ -35,17 +35,17 @@ namespace SchoolManager.ViewModels
 
         public virtual void Init(Repository repository)
         {
-           
-
-            AlumnosSelectListItems = new SelectList(
-                repository.GetAlumnos(),
-                "Id", "Nombre");
-            CursosSelectListItems = new SelectList(
-                repository.GetCursos(),
-                "Id", "NombreCurso");
+                 AlumnosSelectListItems = new SelectList(
+                repository.GetAlumnos(), "Id", "Nombre"
+                );
         }
-
-       
+        public virtual void Init(Repository repository, String opcion)
+        {
+            CursosSelectListItems = new SelectList(
+                repository.GetCursos(), "CursoId", "NombreCurso"
+                );
+        }
+        
 
     }
 }

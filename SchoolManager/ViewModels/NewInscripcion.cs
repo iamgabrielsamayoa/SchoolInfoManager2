@@ -10,8 +10,7 @@ namespace SchoolManager.ViewModels
     {
         public IEnumerable<Alumno> Alumnos { get; set; }
 
-        public FechaInscripcion FechaInscripcion { get; set; }
-
+        public IEnumerable<Curso> Cursos { get; set; }
         public FechaInscripcion Asignar { get; set; }
     }
 }
