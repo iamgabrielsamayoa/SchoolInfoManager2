@@ -19,8 +19,13 @@ namespace SchoolManager.Controllers
         // GET: Inscripcion
         public ActionResult Index()
         {
-
-            return View(db.FechaInscripcion.ToList());
+            // en teoria
+            // SELECT * FROM Fechainscripcion join on Fechainscripcion.CursoId = Curso.Id join on
+            // Fechainscripcoion.Alumnoid = Alumno.Id
+            return View(db.FechaInscripcion
+                .Include(a => a.Curso)
+                .Include(a => a.Alumno)
+                .ToList());
         }
 
         // GET: Inscripcion/Details/5
@@ -63,12 +68,15 @@ namespace SchoolManager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FechaInscripcionID,CursoID,AlumnoID")] FechaInscripcion fechaInscripcion, int? SelectedDepartment)
+        public ActionResult Create(InscripcionAcAddViewModel fechaInscripcion)
         {
-           
+            //fechaInscripcion.Asignar.FechaInscripcionInicial = DateTime.Today;
             if (ModelState.IsValid)
             {
-                db.FechaInscripcion.Add(fechaInscripcion);
+                var asignacion = fechaInscripcion.Asignar;
+                asignacion.FechaInscripcionInicial = DateTime.Now;
+
+                db.FechaInscripcion.Add(asignacion);
                 db.SaveChanges();
               return RedirectToAction("Index");
             }

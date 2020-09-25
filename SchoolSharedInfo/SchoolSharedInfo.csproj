@@ -56,12 +56,28 @@
     <Compile Include="Data\DatabaseInitializer.cs" />
     <Compile Include="Data\Profesor.cs" />
     <Compile Include="Data\Repository.cs" />
+    <Compile Include="Migrations\202009250217471_InitialCreate.cs" />
+    <Compile Include="Migrations\202009250217471_InitialCreate.designer.cs">
+      <DependentUpon>202009250217471_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009250349066_corrgida bd.cs" />
+    <Compile Include="Migrations\202009250349066_corrgida bd.designer.cs">
+      <DependentUpon>202009250349066_corrgida bd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\FechaInscripcion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009250217471_InitialCreate.resx">
+      <DependentUpon>202009250217471_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009250349066_corrgida bd.resx">
+      <DependentUpon>202009250349066_corrgida bd.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

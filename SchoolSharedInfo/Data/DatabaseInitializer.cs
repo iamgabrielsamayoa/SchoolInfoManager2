@@ -47,11 +47,11 @@ namespace SchoolSharedInfo.Data
 
             var FechaInscripcion = new List<FechaInscripcion>
             {
-            new FechaInscripcion{FechaInscripcionID=1, CursoID = 1050, AlumnoID = 1,},
-            new FechaInscripcion{FechaInscripcionID=2, CursoID = 1051, AlumnoID = 2,},
-            new FechaInscripcion{FechaInscripcionID=3, CursoID = 1052, AlumnoID = 3,},
-            new FechaInscripcion{FechaInscripcionID=4, CursoID = 1053, AlumnoID = 4,},
-            new FechaInscripcion{FechaInscripcionID=5, CursoID = 1054, AlumnoID = 5,},
+            new FechaInscripcion{FechaInscripcionID=1, CursoID = 1050, AlumnoID = 1, FechaInscripcionInicial = DateTime.Now, FechaFinalSemestre = new DateTime(2020,8,10),},
+            new FechaInscripcion{FechaInscripcionID=2, CursoID = 1051, AlumnoID = 2,FechaInscripcionInicial = DateTime.Now, FechaFinalSemestre = new DateTime(2020,8,10),},
+            new FechaInscripcion{FechaInscripcionID=3, CursoID = 1052, AlumnoID = 3,FechaInscripcionInicial = DateTime.Now, FechaFinalSemestre = new DateTime(2020,8,10),},
+            new FechaInscripcion{FechaInscripcionID=4, CursoID = 1053, AlumnoID = 4,FechaInscripcionInicial = DateTime.Now, FechaFinalSemestre = new DateTime(2020,8,10),},
+            new FechaInscripcion{FechaInscripcionID=5, CursoID = 1054, AlumnoID = 5,FechaInscripcionInicial = DateTime.Now, FechaFinalSemestre = new DateTime(2020,8,10),},
             };
             FechaInscripcion.ForEach(s => context.FechaInscripcion.Add(s));
             context.SaveChanges();
