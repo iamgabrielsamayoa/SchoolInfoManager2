@@ -24,119 +24,98 @@ namespace SchoolManager.Controllers
                 .Include(a => a.Curso));
         }
 
-        //Details 
-        public ActionResult Detail(int? id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
-
-            Repository repository = new Repository(db);
-            var AlumnosList = repository.GetAlumnos();
-            var CursosList = repository.GetCursos();
-            var InscripcionesList = repository.GetInscripciones();
-
-            var ViewModel = new InscripcionAcAddViewModel
-            {
-                Alumnos = AlumnosList,
-                Cursos = CursosList,
-                Inscripciones = InscripcionesList
-            };
-            ViewModel.Init(repository);
-            ViewModel.Init(repository, "cursos");
-            ViewModel.Init(repository, "fecha");
-
-            
-
-            return View(ViewModel);
-        }
-
-        // GET: 
+        
+        // GET: Details
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Repository repository = new Repository(db);
-            var Inscritos = repository.GetInscripciones();
-            return View();
 
-            if (Inscritos == null)
+            //FechaInscripcion fechaInscripcion = db.FechaInscripcion.Find(id);
+
+            FechaInscripcion fechaInscripcion1 = db.FechaInscripcion.Include(a => a.Alumno)
+                  .Include(q => q.Curso)
+                  .Where(a => a.FechaInscripcionID == id).SingleOrDefault();
+
+            if (fechaInscripcion1 == null)
             {
                 return HttpNotFound();
             }
 
-            Inscritos = db.FechaInscripcion.OrderBy(a => a.AlumnoID).ToList();
+            return View(fechaInscripcion1);
 
-            return View(db.FechaInscripcion.)
+        }
+
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            FechaInscripcion fechaInscripcion = db.FechaInscripcion.Include(a => a.Alumno)
+                  .Include(q => q.Curso)
+                  .Where(a => a.FechaInscripcionID == id).SingleOrDefault();
+            if (fechaInscripcion == null)
+            {
+                return HttpNotFound();
+            }
+            return View(fechaInscripcion);
+        }
+
+        // POST: Inscripcion/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "FechaInscripcionID,CursoID,AlumnoID")] FechaInscripcion fechaInscripcion)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(fechaInscripcion).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(fechaInscripcion);
         }
 
         // GET: 
-        public ActionResult Create()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            FechaInscripcion fechaInscripcion = db.FechaInscripcion.Include(a => a.Alumno)
+                  .Include(q => q.Curso)
+                  .Where(a => a.FechaInscripcionID == id).SingleOrDefault();
+            if (fechaInscripcion == null)
+            {
+                return HttpNotFound();
+            }
+            return View(fechaInscripcion);
         }
 
-        // POST: 
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        // POST: Inscripcion/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            FechaInscripcion fechaInscripcion = db.FechaInscripcion.Include(a => a.Alumno)
+                    .Include(q => q.Curso)
+                    .Where(a => a.FechaInscripcionID == id).SingleOrDefault();
 
-        // GET: AlumnosRegistro/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST:
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-               
+            db.FechaInscripcion.Remove(fechaInscripcion);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST:
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

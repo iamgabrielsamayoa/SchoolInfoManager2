@@ -205,6 +205,9 @@
     <Content Include="Views\Profesor\Index.cshtml" />
     <Content Include="Views\Shared\_DatosGeneralesPartialView.cshtml" />
     <Content Include="Views\RegistroAlumnos\Index.cshtml" />
+    <Content Include="Views\RegistroAlumnos\Details.cshtml" />
+    <Content Include="Views\RegistroAlumnos\Delete.cshtml" />
+    <Content Include="Views\RegistroAlumnos\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

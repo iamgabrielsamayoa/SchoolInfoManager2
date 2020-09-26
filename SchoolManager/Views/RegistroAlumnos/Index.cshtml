@@ -7,8 +7,9 @@
 <h2>Registro de Alumnos</h2>
 
 <p>
-    @Html.ActionLink("Agregar Nuevo Registro", "Create")
+    @Html.ActionLink("Agregar Nuevo Registro", "Create", "Inscripcion")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -42,9 +43,10 @@
             @Html.DisplayFor(modelItem => item.FechaFinalSemestre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FechaInscripcionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FechaInscripcionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FechaInscripcionID })
+            
+            @Html.ActionLink("Editar Registro", "Edit", "Inscripcion", new { id = item.FechaInscripcionID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.FechaInscripcionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.FechaInscripcionID })
         </td>
     </tr>
 }
